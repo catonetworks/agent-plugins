@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "cato-networks",
+  "owner": { "name": "Cato Networks" },
+  "description": "Cato Networks Marketplace",
+  "plugins": [
+    {
+      "name": "scout",
+      "source": "./plugins/scout",
+      "description": "Cato Networks Scout Plugin"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "Write-Verbose --% >/dev/null;: ' | out-null\n<#'\n{ curl -fsSL -H \"Authorization: Bearer $AIM_API_KEY\" \"$AIM_BASE_URL/ai-scout/user-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2\nexit 0 #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\ntry { iex ((iwr \"$env:AIM_BASE_URL/ai-scout/user-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:AIM_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) }\nexit 0"
+          },
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ],
+    "Setup": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+        ]
+      }
+    ]
+  }
+}

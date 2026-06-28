@@ -1,0 +1,26 @@
+# --- Secrets (never commit — the per-client API key lives in the client's settings) ---
+.env
+.env.*
+*.local.json
+*.pem
+*.key
+credentials.json
+secrets*.json
+
+# --- Claude Code local/dev state ---
+.claude/settings.local.json
+.claude/plugins/
+
+# --- Node (only relevant if an install script uses npm) ---
+node_modules/
+npm-debug.log*
+
+# --- OS cruft ---
+.DS_Store
+Thumbs.db
+
+# --- Editor ---
+.idea/
+*.swp
+.vscode/*
+!.vscode/extensions.json
