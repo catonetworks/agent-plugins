@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "Write-Verbose --% >/dev/null 2>&1;: ' | out-null\n<#'\n{ curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\ntry { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\n{ curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\ntry { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
           }
         ]
       }
@@ -15,7 +15,10 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+          {
+            "type": "command",
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\nif [ ! -x \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" ]; then { curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2; fi\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\nif (-not (Test-Path $env:AI_SCOUT_INSTALL_PATH)) { try { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) } }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+          }
         ]
       }
     ],
@@ -23,7 +26,10 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+          {
+            "type": "command",
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\nif [ ! -x \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" ]; then { curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2; fi\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\nif (-not (Test-Path $env:AI_SCOUT_INSTALL_PATH)) { try { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) } }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+          }
         ]
       }
     ],
@@ -31,7 +37,10 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+          {
+            "type": "command",
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\nif [ ! -x \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" ]; then { curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2; fi\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\nif (-not (Test-Path $env:AI_SCOUT_INSTALL_PATH)) { try { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) } }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+          }
         ]
       }
     ],
@@ -39,7 +48,10 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+          {
+            "type": "command",
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\nif [ ! -x \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" ]; then { curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2; fi\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\nif (-not (Test-Path $env:AI_SCOUT_INSTALL_PATH)) { try { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) } }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+          }
         ]
       }
     ],
@@ -47,7 +59,10 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+          {
+            "type": "command",
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\nif [ ! -x \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" ]; then { curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2; fi\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\nif (-not (Test-Path $env:AI_SCOUT_INSTALL_PATH)) { try { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) } }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+          }
         ]
       }
     ],
@@ -55,7 +70,10 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+          {
+            "type": "command",
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\nif [ ! -x \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" ]; then { curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2; fi\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\nif (-not (Test-Path $env:AI_SCOUT_INSTALL_PATH)) { try { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) } }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+          }
         ]
       }
     ],
@@ -63,7 +81,10 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+          {
+            "type": "command",
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\nif [ ! -x \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" ]; then { curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2; fi\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\nif (-not (Test-Path $env:AI_SCOUT_INSTALL_PATH)) { try { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) } }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+          }
         ]
       }
     ],
@@ -71,7 +92,10 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+          {
+            "type": "command",
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\nif [ ! -x \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" ]; then { curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2; fi\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\nif (-not (Test-Path $env:AI_SCOUT_INSTALL_PATH)) { try { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) } }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+          }
         ]
       }
     ],
@@ -79,7 +103,10 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+          {
+            "type": "command",
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\nif [ ! -x \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" ]; then { curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2; fi\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\nif (-not (Test-Path $env:AI_SCOUT_INSTALL_PATH)) { try { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) } }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+          }
         ]
       }
     ],
@@ -87,7 +114,10 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+          {
+            "type": "command",
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\nif [ ! -x \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" ]; then { curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2; fi\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\nif (-not (Test-Path $env:AI_SCOUT_INSTALL_PATH)) { try { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) } }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+          }
         ]
       }
     ],
@@ -95,7 +125,10 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+          {
+            "type": "command",
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\nif [ ! -x \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" ]; then { curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2; fi\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\nif (-not (Test-Path $env:AI_SCOUT_INSTALL_PATH)) { try { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) } }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+          }
         ]
       }
     ],
@@ -103,7 +136,10 @@
       {
         "matcher": "*",
         "hooks": [
-          { "type": "command", "command": "${CLAUDE_PLUGIN_DATA}/bin/ai-scout.exe", "args": ["--hook", "claude-code"] }
+          {
+            "type": "command",
+            "command": "Set-Variable --% >/dev/null 2>&1;: ' | out-null\n<#'\nif [ ! -x \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" ]; then { curl -fsSL -H \"Authorization: Bearer $SCOUT_PLUGIN_API_KEY\" \"$SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.sh\" | AI_SCOUT_INSTALL_PATH=\"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" sh; } 1>&2; fi\nexec \"$CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code #>\n$env:AI_SCOUT_INSTALL_PATH = \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\"\nif (-not (Test-Path $env:AI_SCOUT_INSTALL_PATH)) { try { iex ((iwr \"$env:SCOUT_PLUGIN_BASE_URL/ai-scout/user-level-installation.ps1\" -UseBasicParsing -Headers @{Authorization=\"Bearer $env:SCOUT_PLUGIN_API_KEY\"}).Content) *>&1 | ForEach-Object { [Console]::Error.WriteLine($_) } } catch { [Console]::Error.WriteLine($_) } }\n& \"$env:CLAUDE_PLUGIN_DATA/bin/ai-scout.exe\" --hook claude-code"
+          }
         ]
       }
     ]
